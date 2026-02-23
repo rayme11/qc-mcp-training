@@ -47,3 +47,8 @@ and getting back this error:
 *Expected behavior*
 
 REsults Return of there are matches to the filters
+[INFERRED] Acceptance Criteria from 'Expected behavior' in description.
+[INFERRED] Endpoints from URLs in description.
+Acceptance Criteria: REsults Return of there are matches to the filters
+Endpoints: https://api.enterprise-qa-us-central1.kw.com/uls/listings/search
+[VALIDATION] All required fields present.
