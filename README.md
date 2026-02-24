@@ -20,30 +20,40 @@ The training is divided into clear sections, each with its own guide and practic
    - Validate coverage, review results, and ensure traceability.
 
 
+
 ## Visual Overview: Training Goals & Architecture
 
-```mermaid
-graph LR
-   subgraph MCP Training Architecture
-      QA[Quality Analyst]
-      DEV[Developer]
-      API[Public API]
-      GIT[GitHub Repo]
-      TESTS[Test Automation]
-      OUT[Traceability/Output]
-   end
-   QA -->|Extracts Requirements| GIT
-   QA -->|Analyzes API Contract| API
-   QA -->|Designs Tests| TESTS
-   DEV -->|Implements Features| API
-   TESTS -->|Automated Runs| API
-   TESTS -->|Results| OUT
-   QA -->|Reviews Results| OUT
-   GIT -->|Source & Issues| API
-   GIT -->|Test Coverage| TESTS
+```
+      +---------------------+
+      | Quality Analyst     |
+      +---------------------+
+              |
+              v
+      +---------------------+
+      | GitHub Repo         |
+      +---------------------+
+              |
+              v
+      +---------------------+
+      | Public API          |
+      +---------------------+
+              |
+              v
+      +---------------------+
+      | Test Automation     |
+      +---------------------+
+              |
+              v
+      +---------------------+
+      | Traceability/Output |
+      +---------------------+
+
+      < Developer implements features in Public API >
+      < QA reviews results in Traceability/Output >
+      < GitHub Repo links source, issues, and test coverage >
 ```
 
-This diagram shows how the MCP training connects requirements, API contracts, test design, automation, and traceability across roles and tools.
+This ASCII diagram is GitHub-friendly and shows how MCP training connects requirements, API contracts, test design, automation, and traceability across roles and tools.
 
 ## How to Use This Project
 - Each section has its own markdown file in the docs/ folder.
