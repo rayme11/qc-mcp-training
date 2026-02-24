@@ -1,0 +1,26 @@
+[
+  {
+    "id": "TC_USERID",
+    "status_code": 200,
+    "passed": false,
+    "details": "Expected int, got NoneType"
+  },
+  {
+    "id": "TC_ID",
+    "status_code": 200,
+    "passed": false,
+    "details": "Expected int, got NoneType"
+  },
+  {
+    "id": "TC_TITLE",
+    "status_code": 200,
+    "passed": false,
+    "details": "Expected str, got NoneType"
+  },
+  {
+    "id": "TC_BODY",
+    "status_code": 200,
+    "passed": false,
+    "details": "Expected str, got NoneType"
+  }
+]

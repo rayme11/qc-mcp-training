@@ -61,10 +61,90 @@ This ASCII diagram is GitHub-friendly and shows how MCP training connects requir
 - Use the provided scripts and examples.
 - All output and artifacts are saved in the out/ folder for traceability.
 
-## Next Steps
-- Start with [docs/requirements_analysis.md](docs/requirements_analysis.md) for the first topic.
-- Progress through each section, building your MCP skills end to end.
+
+## 🚀 Deploying & Visualizing on Hugging Face Spaces
+
+This project can be deployed as an interactive web app on [Hugging Face Spaces](https://huggingface.co/spaces) to make agent/LLM orchestration and MCP concepts fully visible and easy to follow.
+
+### How It Works
+
+1. **User Triggers Workflow**
+    - The web UI lets you select and run any MCP lesson or the full workflow.
+    - Each step is triggered by a button or menu in the app.
+
+2. **Agent/LLM Orchestration**
+    - The app clearly displays which agent or LLM (e.g., GitHub Copilot, GPT-4.1) is running each step.
+    - Metadata and provenance are shown for every action (see below).
+
+3. **Step-by-Step Outputs**
+    - Results for each MCP phase (requirements, contract, tests, automation, traceability) are shown in real time.
+    - All outputs are downloadable and traceable.
+
+4. **Visual Workflow**
+    - The UI uses diagrams and progress bars to show the workflow and agent involvement.
+    - Example:
+
+```
+User triggers workflow
+   |
+   v
++-------------------------------+
+| Agentic Orchestrator          |
+| (GitHub Copilot, GPT-4.1)     |
++-------------------------------+
+   |
+   v
++-------------------------------+
+| Lesson 1: Requirements        |
++-------------------------------+
+   |
+   v
++-------------------------------+
+| Lesson 2: API Contract        |
++-------------------------------+
+   |
+   v
++-------------------------------+
+| Lesson 4: Test Design         |
++-------------------------------+
+   |
+   v
++-------------------------------+
+| Lesson 5: Automation          |
++-------------------------------+
+   |
+   v
++-------------------------------+
+| Lesson 6: Traceability        |
++-------------------------------+
+   |
+   v
++-------------------------------+
+| Outputs:                      |
+| - requirements.json           |
+| - posts_contract.json         |
+| - test_design_documentation.json |
+| - automation_results.json     |
+| - traceability_matrix.json    |
++-------------------------------+
+```
+
+### Example UI Elements
+
+- **Agent/LLM Banner:**
+   > "This workflow is orchestrated by GitHub Copilot (GPT-4.1)"
+- **Step Cards:**
+   - Show which agent/LLM is running each step, with status and output preview.
+- **Trigger Buttons:**
+   - "Run All Steps", "Run Test Design Only", etc.
+- **Output Download Links:**
+   - Download each artifact for traceability.
+
+### Why Hugging Face Spaces?
+- Public, easy to share and demo
+- Supports Streamlit, Gradio, Flask, and more
+- Makes agentic workflows and LLM provenance transparent
 
 ---
 
-> This project is designed for both beginners and experienced engineers. All steps are explained in detail, with links to further reading and practical examples.
+> This project is designed for both beginners and experienced engineers. All steps are explained in detail, with links to further reading and practical examples. The Hugging Face Spaces deployment makes the agent/LLM orchestration and MCP concepts fully visible and interactive.

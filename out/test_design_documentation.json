@@ -1,0 +1,34 @@
+[
+  {
+    "id": "TC_USERID",
+    "title": "Validate field 'userId' in /posts",
+    "endpoint": "/posts",
+    "method": "GET",
+    "expected_type": "int",
+    "priority": "Normal"
+  },
+  {
+    "id": "TC_ID",
+    "title": "Validate field 'id' in /posts",
+    "endpoint": "/posts",
+    "method": "GET",
+    "expected_type": "int",
+    "priority": "Normal"
+  },
+  {
+    "id": "TC_TITLE",
+    "title": "Validate field 'title' in /posts",
+    "endpoint": "/posts",
+    "method": "GET",
+    "expected_type": "str",
+    "priority": "Normal"
+  },
+  {
+    "id": "TC_BODY",
+    "title": "Validate field 'body' in /posts",
+    "endpoint": "/posts",
+    "method": "GET",
+    "expected_type": "str",
+    "priority": "Normal"
+  }
+]
