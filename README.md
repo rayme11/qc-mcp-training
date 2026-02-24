@@ -31,42 +31,70 @@ The training is divided into clear sections, each with its own guide and practic
 6. **Review & Traceability**
    - Validate coverage, review results, and ensure traceability.
 
+7. **MCP Client Implementation**
+   - See `mcp_client/` for the client scaffold. Gathers context, sends requests, logs activity, and provides a simple UI (Streamlit or similar).
+   - All requests and responses are logged to the terminal and UI for transparency and learning.
+8. **MCP Server Implementation (with FastAPI/fastmcp)**
+   - See `mcp_server/` for the server scaffold. Receives requests, orchestrates workflows, logs all steps, and integrates local LLMs (OpenAI, Ollama, etc.).
+   - The server logs every incoming request, workflow step, and response to the terminal or screen, showing agent/LLM involvement.
+9. **Client-Server Interaction Demo**
+   - Run both client and server locally to demonstrate full MCP context exchange and traceability, with real-time logs for every step.
+10. **Deployment & Agentic Visualization**
+   - Deploy the solution (e.g., Hugging Face Spaces) to make agent/LLM orchestration and MCP concepts visible and interactive, with UI and logs for public demos.
+---
+
+> The project now includes `mcp_client/` and `mcp_server/` folders for clear separation of roles. The client provides a simple UI and logs all activity; the server uses FastAPI for easy API creation and agentic orchestration. Local-first, then deployable for public demos.
+> **Implementation Note:**
+> We will use FastAPI (or a similar framework, e.g., 'fastmcp') for the MCP server to make the API clear, interactive, and easy to log. All client-server interactions will be visible in the terminal for step-by-step learning.
+
+> **Concept:**
+> The MCP (Model Context Protocol) is about structured, traceable, and automated context exchange between agents, clients, and servers. By building both a client and a server, you’ll see how context, actions, and results flow through the system—enabling true agentic automation and traceability.
+
+**Approach:**
+- First, implement and test everything locally for clarity and debugging.
+- Then, deploy to a public platform (like Hugging Face Spaces) to visualize and share the full workflow, agent/LLM provenance, and MCP interactions.
+
+Each step will include conceptual explanations, code, and practical demonstrations.
 
 
-## Visual Overview: Training Goals & Architecture
+
+
+## Visual Overview: MCP Architecture
 
 ```
-      +---------------------+
-      | Quality Analyst     |
-      +---------------------+
-              |
-              v
-      +---------------------+
-      | GitHub Repo         |
-      +---------------------+
-              |
-              v
-      +---------------------+
-      | Public API          |
-      +---------------------+
-              |
-              v
-      +---------------------+
-      | Test Automation     |
-      +---------------------+
-              |
-              v
-      +---------------------+
-      | Traceability/Output |
-      +---------------------+
-
-      < Developer implements features in Public API >
-      < QA reviews results in Traceability/Output >
-      < GitHub Repo links source, issues, and test coverage >
+   +-------------------+         +-------------------+
+   |   MCP Client UI   | <-----> |   MCP Server      |
+   | (Streamlit, CLI)  |         | (FastAPI)         |
+   +-------------------+         +-------------------+
+       |                           |
+       |  REST API (JSON)          |
+       v                           v
+   +-------------------+         +-------------------+
+   |  User Prompts &   |         |  Agentic          |
+   |  Workflow Steps   |         |  Orchestration    |
+   +-------------------+         +-------------------+
+       |                           |
+       |                           |
+       v                           v
+   +-------------------+         +-------------------+
+   |  Context, Actions |-------->|  LLM (OpenAI,     |
+   |  & Results        |         |  Ollama, etc.)    |
+   +-------------------+         +-------------------+
+       |                           |
+       v                           v
+   +-------------------+         +-------------------+
+   |  Traceability,    |<--------|  Provenance,      |
+   |  Coverage, Output |         |  Workflow Results |
+   +-------------------+         +-------------------+
 ```
 
-This ASCII diagram is GitHub-friendly and shows how MCP training connects requirements, API contracts, test design, automation, and traceability across roles and tools.
->>>>>>> 7a8cca8 (Update training architecture diagram in README.md for clarity and GitHub compatibility)
+**Legend:**
+- MCP Client UI: User-facing interface (Streamlit, CLI)
+- MCP Server: Orchestrates workflows, calls LLMs, returns results
+- LLM: Local/cloud language model (OpenAI, Ollama, etc.)
+- Traceability, Coverage, Output: Artifacts/results for MCP concepts
+
+This diagram shows how prompts, context, and actions flow from the user through the client, server, and LLM, with results and provenance returned for traceability.
 
 ## How to Use This Project
 - Each section has its own markdown file in the docs/ folder.
