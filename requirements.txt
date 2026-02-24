@@ -1,3 +1,0 @@
-jira
-python-dotenv
-# Add more packages as needed for MCP automation

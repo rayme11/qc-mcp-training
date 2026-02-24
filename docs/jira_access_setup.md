@@ -1,3 +1,0 @@
-# Jira Access Setup
-
-...existing code...

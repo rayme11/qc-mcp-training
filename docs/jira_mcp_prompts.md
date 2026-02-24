@@ -1,3 +1,0 @@
-# Jira MCP Prompts
-
-...existing code...
