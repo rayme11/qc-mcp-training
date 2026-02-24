@@ -43,6 +43,7 @@ The training is divided into clear sections, each with its own guide and practic
    - Deploy the solution (e.g., Hugging Face Spaces) to make agent/LLM orchestration and MCP concepts visible and interactive, with UI and logs for public demos.
 ---
 
+<<<<<<< HEAD
 > The project now includes `mcp_client/` and `mcp_server/` folders for clear separation of roles. The client provides a simple UI and logs all activity; the server uses FastAPI for easy API creation and agentic orchestration. Local-first, then deployable for public demos.
 > **Implementation Note:**
 > We will use FastAPI (or a similar framework, e.g., 'fastmcp') for the MCP server to make the API clear, interactive, and easy to log. All client-server interactions will be visible in the terminal for step-by-step learning.
@@ -95,6 +96,42 @@ Each step will include conceptual explanations, code, and practical demonstratio
 - Traceability, Coverage, Output: Artifacts/results for MCP concepts
 
 This diagram shows how prompts, context, and actions flow from the user through the client, server, and LLM, with results and provenance returned for traceability.
+=======
+
+## Visual Overview: Training Goals & Architecture
+
+```
+      +---------------------+
+      | Quality Analyst     |
+      +---------------------+
+              |
+              v
+      +---------------------+
+      | GitHub Repo         |
+      +---------------------+
+              |
+              v
+      +---------------------+
+      | Public API          |
+      +---------------------+
+              |
+              v
+      +---------------------+
+      | Test Automation     |
+      +---------------------+
+              |
+              v
+      +---------------------+
+      | Traceability/Output |
+      +---------------------+
+
+      < Developer implements features in Public API >
+      < QA reviews results in Traceability/Output >
+      < GitHub Repo links source, issues, and test coverage >
+```
+
+This ASCII diagram is GitHub-friendly and shows how MCP training connects requirements, API contracts, test design, automation, and traceability across roles and tools.
+>>>>>>> 7a8cca8 (Update training architecture diagram in README.md for clarity and GitHub compatibility)
 
 ## How to Use This Project
 - Each section has its own markdown file in the docs/ folder.
