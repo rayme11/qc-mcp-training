@@ -3,6 +3,7 @@
 ## What is MCP Training?
 This project is designed to help you learn and implement Model Context Protocol (MCP) concepts for quality control, automation, and API testing. The training is hands-on, step-by-step, and uses public APIs and open-source tools so you can practice and build real skills.
 
+
 ## Training Structure
 The training is divided into clear sections, each with its own guide and practical exercises:
 
@@ -18,6 +19,31 @@ The training is divided into clear sections, each with its own guide and practic
    - Build and run automated tests using Python and open-source frameworks.
 6. **Review & Traceability**
    - Validate coverage, review results, and ensure traceability.
+
+7. **MCP Client Implementation**
+   - See `mcp_client/` for the client scaffold. Gathers context, sends requests, logs activity, and provides a simple UI (Streamlit or similar).
+   - All requests and responses are logged to the terminal and UI for transparency and learning.
+8. **MCP Server Implementation (with FastAPI/fastmcp)**
+   - See `mcp_server/` for the server scaffold. Receives requests, orchestrates workflows, logs all steps, and integrates local LLMs (OpenAI, Ollama, etc.).
+   - The server logs every incoming request, workflow step, and response to the terminal or screen, showing agent/LLM involvement.
+9. **Client-Server Interaction Demo**
+   - Run both client and server locally to demonstrate full MCP context exchange and traceability, with real-time logs for every step.
+10. **Deployment & Agentic Visualization**
+   - Deploy the solution (e.g., Hugging Face Spaces) to make agent/LLM orchestration and MCP concepts visible and interactive, with UI and logs for public demos.
+---
+
+> The project now includes `mcp_client/` and `mcp_server/` folders for clear separation of roles. The client provides a simple UI and logs all activity; the server uses FastAPI for easy API creation and agentic orchestration. Local-first, then deployable for public demos.
+> **Implementation Note:**
+> We will use FastAPI (or a similar framework, e.g., 'fastmcp') for the MCP server to make the API clear, interactive, and easy to log. All client-server interactions will be visible in the terminal for step-by-step learning.
+
+> **Concept:**
+> The MCP (Model Context Protocol) is about structured, traceable, and automated context exchange between agents, clients, and servers. By building both a client and a server, you’ll see how context, actions, and results flow through the system—enabling true agentic automation and traceability.
+
+**Approach:**
+- First, implement and test everything locally for clarity and debugging.
+- Then, deploy to a public platform (like Hugging Face Spaces) to visualize and share the full workflow, agent/LLM provenance, and MCP interactions.
+
+Each step will include conceptual explanations, code, and practical demonstrations.
 
 
 

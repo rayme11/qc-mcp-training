@@ -1,0 +1,37 @@
+# .gitignore for MCP Training Project
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment
+.env
+.env.*
+
+# Streamlit
+.streamlit/
+
+# FastAPI/Uvicorn
+*.log
+
+# Output and artifacts
+out/
+*.json
+*.csv
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test and temp
+*.tmp
+*.bak
+
+# Add more patterns as needed for future integrations
