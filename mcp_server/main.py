@@ -28,7 +28,7 @@ logging.basicConfig(level=logging.INFO)
 @app.post("/run_action")
 async def run_action(request: Request):
     data = await request.json()
-    logging.info(f"Received action request: {data}")
+    logging.info("[SERVER] Received action request from client: %s", data)
     agent_name = "GitHub Copilot (GPT-4.1)"
     provenance = {
         "agent": agent_name,
@@ -38,15 +38,18 @@ async def run_action(request: Request):
     action = data.get("action")
     output = f"Simulated LLM response for action '{action}'."
 
+    logging.info(f"[SERVER] Executing workflow step: {action}")
+
     if action == "llm_prompt":
         prompt = data.get("context", {}).get("prompt", "")
+        logging.info(f"[SERVER] Calling LLM with prompt: {prompt}")
         output = call_openai(prompt)
         provenance["llm_type"] = "OpenAI"
     elif action == "traceability_matrix":
-        # Simulate traceability matrix generation
         reqs = data.get("context", {}).get("requirements", [])
         tcs = data.get("context", {}).get("test_cases", [])
         results = data.get("context", {}).get("results", [])
+        logging.info(f"[SERVER] Generating traceability matrix for requirements: {reqs} and test_cases: {tcs}")
         output = {
             "traceability_matrix": [
                 {"requirement": r, "test_case": tc, "result": results[i] if i < len(results) else "unknown"}
@@ -55,10 +58,10 @@ async def run_action(request: Request):
         }
         provenance["concept"] = "Traceability Matrix"
     elif action == "requirements_mapping":
-        # Simulate requirements mapping
         reqs = data.get("context", {}).get("requirements", [])
         endpoints = data.get("context", {}).get("api_endpoints", [])
         coverage = data.get("context", {}).get("test_coverage", {})
+        logging.info(f"[SERVER] Mapping requirements {reqs} to endpoints {endpoints} and coverage {coverage}")
         output = {
             "requirements_mapping": [
                 {
@@ -77,8 +80,8 @@ async def run_action(request: Request):
         "input": data,
         "output": output
     }
-    logging.info(f"Agentic Provenance: {provenance}")
-    logging.info(f"Returning result: {result}")
+    logging.info(f"[SERVER] Agentic Provenance: {provenance}")
+    logging.info(f"[SERVER] Returning result to client: {result}")
     return JSONResponse(content=result)
 
 # To run locally: `uvicorn main:app --reload`

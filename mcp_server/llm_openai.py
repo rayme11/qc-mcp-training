@@ -8,20 +8,22 @@ Concept: Demonstrates how to integrate a real LLM for agentic workflows.
 """
 
 import os
+import dotenv
 import openai
 import logging
 
+dotenv.load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def call_openai(prompt):
     logging.info(f"Calling OpenAI LLM with prompt: {prompt}")
     try:
-        response = openai.ChatCompletion.create(
+        response = openai.chat.completions.create(
             model="gpt-4",
             messages=[{"role": "user", "content": prompt}],
             max_tokens=256
         )
-        result = response.choices[0].message["content"]
+        result = response.choices[0].message.content
         logging.info(f"OpenAI LLM response: {result}")
         return result
     except Exception as e:
