@@ -47,39 +47,43 @@ Each step will include conceptual explanations, code, and practical demonstratio
 
 
 
-## Visual Overview: Training Goals & Architecture
+
+## Visual Overview: MCP Architecture
 
 ```
-      +---------------------+
-      | Quality Analyst     |
-      +---------------------+
-              |
-              v
-      +---------------------+
-      | GitHub Repo         |
-      +---------------------+
-              |
-              v
-      +---------------------+
-      | Public API          |
-      +---------------------+
-              |
-              v
-      +---------------------+
-      | Test Automation     |
-      +---------------------+
-              |
-              v
-      +---------------------+
-      | Traceability/Output |
-      +---------------------+
-
-      < Developer implements features in Public API >
-      < QA reviews results in Traceability/Output >
-      < GitHub Repo links source, issues, and test coverage >
+   +-------------------+         +-------------------+
+   |   MCP Client UI   | <-----> |   MCP Server      |
+   | (Streamlit, CLI)  |         | (FastAPI)         |
+   +-------------------+         +-------------------+
+       |                           |
+       |  REST API (JSON)          |
+       v                           v
+   +-------------------+         +-------------------+
+   |  User Prompts &   |         |  Agentic          |
+   |  Workflow Steps   |         |  Orchestration    |
+   +-------------------+         +-------------------+
+       |                           |
+       |                           |
+       v                           v
+   +-------------------+         +-------------------+
+   |  Context, Actions |-------->|  LLM (OpenAI,     |
+   |  & Results        |         |  Ollama, etc.)    |
+   +-------------------+         +-------------------+
+       |                           |
+       v                           v
+   +-------------------+         +-------------------+
+   |  Traceability,    |<--------|  Provenance,      |
+   |  Coverage, Output |         |  Workflow Results |
+   +-------------------+         +-------------------+
 ```
 
-This ASCII diagram is GitHub-friendly and shows how MCP training connects requirements, API contracts, test design, automation, and traceability across roles and tools.
+**Legend:**
+- MCP Client UI: User-facing interface (Streamlit, CLI)
+- MCP Server: Orchestrates workflows, calls LLMs, returns results
+- LLM: Local/cloud language model (OpenAI, Ollama, etc.)
+- Traceability, Coverage, Output: Artifacts/results for MCP concepts
+
+This diagram shows how prompts, context, and actions flow from the user through the client, server, and LLM, with results and provenance returned for traceability.
 
 ## How to Use This Project
 - Each section has its own markdown file in the docs/ folder.

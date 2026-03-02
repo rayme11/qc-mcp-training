@@ -1,3 +1,4 @@
+from fastapi.responses import HTMLResponse
 # main.py - MCP Server (FastAPI scaffold)
 """
 This is the entry point for the MCP server.
@@ -12,9 +13,15 @@ Concept: The server is the central orchestrator, coordinating agentic actions an
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 import logging
-from llm_openai import call_openai
+from .llm_openai import call_openai
+
 
 app = FastAPI()
+
+# Root endpoint for landing page
+@app.get("/", response_class=HTMLResponse)
+async def read_root():
+    return "<h2>Welcome to the MCP Training Server!</h2><p>Visit <a href='/docs'>/docs</a> for API documentation.</p>"
 
 logging.basicConfig(level=logging.INFO)
 
@@ -28,12 +35,42 @@ async def run_action(request: Request):
         "llm_type": "local or cloud",
         "workflow_step": data.get("action", "unknown")
     }
-    output = f"Simulated LLM response for action '{data.get('action', 'unknown')}'."
-    # If action is 'llm_prompt', call real LLM
-    if data.get("action") == "llm_prompt":
+    action = data.get("action")
+    output = f"Simulated LLM response for action '{action}'."
+
+    if action == "llm_prompt":
         prompt = data.get("context", {}).get("prompt", "")
         output = call_openai(prompt)
         provenance["llm_type"] = "OpenAI"
+    elif action == "traceability_matrix":
+        # Simulate traceability matrix generation
+        reqs = data.get("context", {}).get("requirements", [])
+        tcs = data.get("context", {}).get("test_cases", [])
+        results = data.get("context", {}).get("results", [])
+        output = {
+            "traceability_matrix": [
+                {"requirement": r, "test_case": tc, "result": results[i] if i < len(results) else "unknown"}
+                for i, (r, tc) in enumerate(zip(reqs, tcs))
+            ]
+        }
+        provenance["concept"] = "Traceability Matrix"
+    elif action == "requirements_mapping":
+        # Simulate requirements mapping
+        reqs = data.get("context", {}).get("requirements", [])
+        endpoints = data.get("context", {}).get("api_endpoints", [])
+        coverage = data.get("context", {}).get("test_coverage", {})
+        output = {
+            "requirements_mapping": [
+                {
+                    "requirement": r,
+                    "api_endpoints": endpoints,
+                    "test_coverage": coverage.get(r, [])
+                }
+                for r in reqs
+            ]
+        }
+        provenance["concept"] = "Requirements Mapping"
+
     result = {
         "status": "completed",
         "provenance": provenance,
