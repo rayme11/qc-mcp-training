@@ -1,4 +1,6 @@
-fastapi
+altair
+pandas
+streamlitfastapi
 uvicorn
 streamlit
 requests
