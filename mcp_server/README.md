@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # ---
 # title: MCP Training Project
 # emoji: 🚀
@@ -10,8 +9,6 @@
 # app_file: ../mcp_client/ui_streamlit.py
 # pinned: false
 # ---
-=======
->>>>>>> 3089e9e (Add MCP client and server implementations with Streamlit UI and OpenAI integration)
 # MCP Server
 
 This folder contains the MCP server implementation. The server is responsible for:
