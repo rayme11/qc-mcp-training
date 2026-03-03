@@ -1,13 +1,3 @@
-# ui_streamlit.py - MCP Client UI (Streamlit)
-"""
-This file provides a simple Streamlit UI for the MCP client.
-- Lets users enter context and action prompts
-- Sends requests to the MCP server
-- Displays/logs all requests and responses
-- Makes agentic orchestration visible and interactive
-
-Concept: The UI makes it easy to experiment with MCP workflows and see agent/LLM responses in real time.
-"""
 
 import streamlit as st
 import requests
@@ -16,10 +6,6 @@ import json
 st.title("MCP Client UI - Agentic Demo")
 st.write("Interact with the MCP server and see agentic orchestration in action.")
 
-
-# Step-by-step workflow descriptions
-
-# Expanded workflow steps
 workflow_steps = {
     "run_all_steps": "Run the full MCP workflow end-to-end and display all outputs.",
     "extract_contract": "Extracts and documents the API contract from requirements/context.",
@@ -32,7 +18,6 @@ workflow_steps = {
 workflow = st.selectbox("Select MCP Workflow Step", list(workflow_steps.keys()))
 st.write(f"**Step Description:** {workflow_steps[workflow]}")
 
-# Context templates for each step
 context_templates = {
     "extract_contract": '{"requirement": "Test API contract extraction"}',
     "run_automation": '{"test_cases": [{"id": "TC1", "desc": "Check /posts endpoint"}]}',
@@ -49,7 +34,6 @@ if workflow == "run_all_steps":
     if st.button("Run All Steps"):
         all_outputs = {}
         provenance_list = []
-        # Define the steps and their actions
         steps = [
             ("extract_contract", json.loads(context_templates["extract_contract"])),
             ("run_automation", json.loads(context_templates["run_automation"])),
