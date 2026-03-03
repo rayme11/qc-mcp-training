@@ -18,9 +18,11 @@ def send_action(context, action):
         "context": context,
         "action": action
     }
-    print(f"Sending request to MCP server: {json.dumps(payload, indent=2)}")
+    print("[CLIENT] Sending request to MCP server:")
+    print(json.dumps(payload, indent=2))
     response = requests.post(url, json=payload)
-    print(f"Received response: {response.text}")
+    print("[CLIENT] Received response from MCP server:")
+    print(response.text)
     return response.json()
 
 if __name__ == "__main__":
