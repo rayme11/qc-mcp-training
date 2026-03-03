@@ -1,10 +1,4 @@
-jira
-python-dotenv
-# Add more packages as needed for MCP automation
-
-altair
-pandas
-streamlitfastapi
+fastapi
 uvicorn
 streamlit
 requests
