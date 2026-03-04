@@ -1,10 +1,16 @@
 
+
 import streamlit as st
 import requests
 import json
+import os
 
 st.title("MCP Client UI - Agentic Demo")
 st.write("Interact with the MCP server and see agentic orchestration in action.")
+
+MCP_SERVER_HOST = os.getenv("MCP_SERVER_HOST", "0.0.0.0")
+MCP_SERVER_PORT = int(os.getenv("MCP_SERVER_PORT", "8000"))
+SERVER_URL = f"http://{MCP_SERVER_HOST}:{MCP_SERVER_PORT}/run_action"
 
 workflow_steps = {
     "run_all_steps": "Run the full MCP workflow end-to-end and display all outputs.",
@@ -42,7 +48,7 @@ if workflow == "run_all_steps":
         ]
         for action, context in steps:
             payload = {"context": context, "action": action}
-            response = requests.post("http://localhost:8000/run_action", json=payload)
+            response = requests.post(SERVER_URL, json=payload)
             resp_json = response.json()
             all_outputs[action] = resp_json.get("output", {})
             provenance_list.append(resp_json.get("provenance", {}))
@@ -76,7 +82,7 @@ else:
             payload = {"context": context, "action": workflow}
             st.write("## Request Sent:")
             st.json(payload)
-            response = requests.post("http://localhost:8000/run_action", json=payload)
+            response = requests.post(SERVER_URL, json=payload)
             resp_json = response.json()
             st.write("## Response Received:")
             st.json(resp_json)

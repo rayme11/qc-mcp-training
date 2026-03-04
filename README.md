@@ -186,6 +186,6 @@ User triggers workflow
 - Supports Streamlit, Gradio, Flask, and more
 - Makes agentic workflows and LLM provenance transparent
 
----
+## Hugging Face Spaces Deployment
 
-> This project is designed for both beginners and experienced engineers. All steps are explained in detail, with links to further reading and practical examples. The Hugging Face Spaces deployment makes the agent/LLM orchestration and MCP concepts fully visible and interactive.
+> **Note:** The Streamlit client now connects to the MCP server using `0.0.0.0:8000` by default in Hugging Face Spaces. Locally, it uses `.env` settings (`localhost:8000`).
