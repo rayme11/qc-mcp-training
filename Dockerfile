@@ -15,5 +15,6 @@ RUN chmod +x app.sh
 
 
 EXPOSE 8000
+EXPOSE 7860
 
 CMD ["./app.sh"]
