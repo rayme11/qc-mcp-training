@@ -6,7 +6,7 @@ colorTo: blue
 sdk_version: "1.32.0"
 python_version: "3.10"
 pinned: false
-sdk: custom
+sdk: docker
 ---
 # MCP Training Project
 
