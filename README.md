@@ -6,7 +6,6 @@ colorTo: blue
 sdk: streamlit
 sdk_version: "1.32.0"
 python_version: "3.10"
-app_file: mcp_client/ui_streamlit.py
 pinned: false
 ---
 # MCP Training Project
