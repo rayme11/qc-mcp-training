@@ -13,7 +13,7 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 RUN chmod +x app.sh
 
+
 EXPOSE 8000
-EXPOSE 8501
 
 CMD ["./app.sh"]
