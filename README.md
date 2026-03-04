@@ -3,7 +3,6 @@ title: MCP Training Project
 emoji: 🚀
 colorFrom: indigo
 colorTo: blue
-sdk: streamlit
 sdk_version: "1.32.0"
 python_version: "3.10"
 pinned: false
