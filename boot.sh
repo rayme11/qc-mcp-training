@@ -1,12 +1,11 @@
 #!/bin/bash
 # Boot script to run both FastAPI server and Streamlit client
 
-echo "Starting FastAPI server..."
-uvicorn mcp_server.main:app --reload &
+echo "Starting FastAPI server on 0.0.0.0:8000..."
+uvicorn mcp_server.main:app --host 0.0.0.0 --port 8000 &
 sleep 2
 echo "Starting Streamlit client..."
-cd mcp_client && streamlit run ui_streamlit.py &
-cd ..
+streamlit run mcp_client/ui_streamlit.py
 echo "Both services started."
-echo "FastAPI: http://localhost:8000"
-echo "Streamlit: http://localhost:8501"
+echo "FastAPI: http://0.0.0.0:8000"
+echo "Streamlit: http://0.0.0.0:8501"
