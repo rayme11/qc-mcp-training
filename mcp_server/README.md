@@ -37,6 +37,17 @@ This folder contains the MCP server implementation. The server is responsible fo
 - To use OpenAI, set your `OPENAI_API_KEY` environment variable.
 - Send a request with action `llm_prompt` and context `{ "prompt": "your prompt here" }` to call the LLM.
 - Provenance and workflow steps remain visible in logs and responses.
+Provenance and workflow steps remain visible in logs and responses.
+
+### How to Run on Hugging Face Spaces
+- Do **not** use `.env` for secrets. Set `OPENAI_API_KEY` in Spaces Settings → Secrets.
+- Spaces will run both FastAPI (port 8000) and Streamlit (port 7860) via Docker.
+- Push changes with `git push hf main`.
+- Access FastAPI at `[your-space-url]:8000`.
+
+### Security
+- Never commit API keys to git.
+- Use `.env` only for local development and keep it in `.gitignore`.
 
 ---
 

@@ -53,6 +53,60 @@ The training is divided into clear sections, each with its own guide and practic
 - First, implement and test everything locally for clarity and debugging.
 - Then, deploy to a public platform (like Hugging Face Spaces) to visualize and share the full workflow, agent/LLM provenance, and MCP interactions.
 
+
+## How to Run Locally
+
+1. **Install dependencies:**
+   - `pip install -r requirements.txt`
+   - (Optional) Create and activate a virtual environment.
+
+2. **Set up your `.env` file:**
+   - Copy `.env.example` to `.env` (if available) and add your API keys locally.
+   - **Never commit `.env` to git or push to public repos.**
+
+3. **Start the MCP server:**
+   - `cd mcp_server`
+   - `uvicorn main:app --reload`
+
+4. **Start the MCP client (Streamlit UI):**
+   - `cd mcp_client`
+   - `streamlit run ui_streamlit.py`
+
+5. **Interact with the UI:**
+   - Enter prompts, view agentic orchestration, and see logs in real time.
+
+---
+## How to Deploy on Hugging Face Spaces
+
+1. **Do NOT use `.env` for secrets.**
+   - Go to your Space Settings → Secrets.
+   - Add your API key (e.g., `OPENAI_API_KEY`) as a secret.
+   - The app will read secrets from environment variables.
+
+2. **Spaces uses Docker for deployment:**
+   - See `Dockerfile` and `app.sh` for entry points.
+   - Both FastAPI (port 8000) and Streamlit (port 7860) are exposed.
+
+3. **To deploy:**
+   - Push your code to Hugging Face with `git push hf main`.
+   - Spaces will build and run the app automatically.
+
+4. **Access the app:**
+   - Streamlit UI: [your-space-url]:7860
+   - FastAPI server: [your-space-url]:8000
+
+---
+## Security Notes
+- **Never commit API keys or secrets to git.**
+- Use Hugging Face Spaces secrets for deployment.
+- Locally, keep `.env` in `.gitignore`.
+
+---
+## Quick Reference
+- Local: `.env` for secrets, run server/client as above.
+- Spaces: Use Settings → Secrets, deploy with Docker.
+
+---
 Each step will include conceptual explanations, code, and practical demonstrations.
 
 

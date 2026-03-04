@@ -22,6 +22,15 @@ This folder contains the MCP client implementation. The client is responsible fo
 - Or run the Streamlit UI (`streamlit run ui_streamlit.py` in mcp_client) for interactive prompt entry and agentic orchestration visibility
 - The client will log all activity and show example agentic interaction
 
----
 
 > As we proceed, this README will be updated to explain each new feature and concept added to the client.
+
+### How to Run on Hugging Face Spaces
+- Do **not** use `.env` for secrets. Set `OPENAI_API_KEY` in Spaces Settings → Secrets.
+- Spaces will run both FastAPI (port 8000) and Streamlit (port 7860) via Docker.
+- Push changes with `git push hf main`.
+- Access Streamlit UI at `[your-space-url]:7860`.
+
+### Security
+- Never commit API keys to git.
+- Use `.env` only for local development and keep it in `.gitignore`.
